@@ -4,5 +4,5 @@ import numpy as np
 
 #Defino funcion
 def ordenarPuntos():
-    
+    print("Hola mundo")
 

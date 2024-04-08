@@ -34,3 +34,12 @@ def alinemiento(imagen,ancho,alto):
             #Perspectiva, por si muevo la camara o algo
             M = cv2.getPerspectiveTransform(puntos1, puntos2)
             imagen_alineada = cv2.warpPerspective(imagen, M, (ancho,alto))
+    return imagen_alineada
+
+capturaVideo = cv2.VideoCapture(0)
+
+while True:
+    tipocamara, camara = capturaVideo.read()
+    if tipocamara==False:
+        break
+    imagen_A6 = 

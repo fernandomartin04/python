@@ -42,4 +42,23 @@ while True:
     tipocamara, camara = capturaVideo.read()
     if tipocamara==False:
         break
-    imagen_A6 = 
+    imagen_A6 = alinemiento(camara,ancho=480,alto=677)
+    if imagen_A6 is not None:
+        puntos=[]
+        imagen_gris=cv2.cvtColor(imagen_A6,cv2.COLOR_BGR2GRAY)
+        blur=cv2.GaussianBlur(imagen_gris,(5,5),1)
+        _,umbral2=cv2.threshold(blur,0,255,cv2.THRESH_OTSU+cv2.THRESH_BINARY_INV)
+        cv2.imshow("Umbral", umbral2)
+        contorno2,jerarquia=cv2.findContours(umbral2, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[0]
+        cv2.drawContours(imagen_A6, contorno2, -1, (255,0,0), 2)
+        suma1=0.0
+        suma2=0.0
+        for c_2 in contorno2:
+            area=cv2.contourArea(c_2)
+            momentos = cv2.moments(c_2)
+            if(momentos["m00"]==0):
+                momentos["m00"]=1.0
+            x=int(momentos["m10"]/momentos["m00"])
+            y=int(momentos["m01"]/momentos["m00"])
+
+            if 

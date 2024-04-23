@@ -67,3 +67,4 @@ while True:
         break
 capturavideo.release()
 cv2.destroyAllWindows()
+
